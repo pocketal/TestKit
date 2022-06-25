@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build for iOS
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild build-for-testing -scheme TestKit -destination "platform=iOS Simulator,OS=latest" | xcpretty
+      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild build-for-testing -scheme TestKit -destination "platform=iOS Simulator" | xcpretty
     - name: Run iOS tests
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild test-without-building -scheme TestKitDemoUITests -destination "platform=iOS Simulator,OS=latest,name=iPhone 12" | xcpretty
     #- name: Build

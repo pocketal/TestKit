@@ -8,14 +8,15 @@ on:
 
 jobs:
   build:
-    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest]
-        swift: ["5.5.0", "5.6.0"]
+
     runs-on: macos-latest
 
     steps:
+    - uses: fwal/setup-swift@2040b795e5c453c3a05fcb8316496afc8a74f192
+      with:
+        swift-version: "5.5.0"
+    - name: Get swift version
+      run: swift --version # Swift 5.3.3
     - uses: actions/checkout@v3
     - name: Build
       run: swift build -v
